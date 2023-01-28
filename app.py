@@ -18,13 +18,8 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'bmp'])
 
 app.config["SECRET_KEY"] = 'adfklasdfkK67986&769row7r1902asdf387132j'
 app.config['UPLOAD_PATH'] = os.path.join(BASEDIR, 'static/images')
-# app.config['RESULT_PATH'] = os.path.join(BASEDIR, 'UALD\universal_landmark_detection\.eval\.._runs_GU2Net_runs_results_single_epoch000\chest\images')
 
-# 初始化摄像头
-cap = cv2.VideoCapture(0)
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 680)  # 设置摄像头输出宽
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)  # 设置摄像头输出高
-print("start reading video...")
+
 time.sleep(2.0)
 print("start working")
 

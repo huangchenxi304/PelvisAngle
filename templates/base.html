@@ -20,16 +20,16 @@
         </div>
     </div>
     <div class="container">
-        <div class="row clearfix">
+        <div>
 
             {% block uploadpart %}
 {#            使用block从image.html中调用#}
             {% endblock %}
 
             {% if  img_with_dots %}
-                <div class="col-md-6 column" style="background-color:#eee; padding-top: 20px;">
+                <div class="col-6 column" style="background-color:#eee; padding-top: 20px;">
                     <h4>
-                        Recognition Outcome
+                        分析结果
                     </h4>
 
                     <table class="table table-bordered">
@@ -53,8 +53,8 @@
                     </table>
 
                 </div>
-                <div class="col-md-6 column" style="background-color:#eee; padding-top: 20px;">
-                    <img src="/static/images/{{img_with_dots}}" alt="" style="width: 300px; height: 300px">
+                <div class="col-6 column" style="background-color:#eee; padding-top: 20px;">
+                    <img src="/static/images/{{img_with_dots}}" alt="" style="width: 512px; height: 512px">
 
                 </div>
             {% endif %}
