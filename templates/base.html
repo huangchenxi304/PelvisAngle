@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+</head>
+
+<body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <div class="jumbotron jumbotron-fluid bg-info text-white">
+        <div class="container">
+            <h1 class="text-center">Pelvis angle System</h1>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row clearfix">
+
+            {% block uploadpart %}
+{#            使用block从image.html中调用#}
+            {% endblock %}
+
+            {% if  img_with_dots %}
+                <div class="col-md-6 column" style="background-color:#eee; padding-top: 20px;">
+                    <h4>
+                        Recognition Outcome
+                    </h4>
+
+{#                    <table class="table table-bordered">#}
+{#                        {% if emotion_conf %}#}
+{#                            {% for emotion, percent in emotion_conf.items() %}#}
+{#                                <tr>#}
+{#                                    <td> {{ emotion }} </td>#}
+{#                                    <td> {{ percent }}% </td>#}
+{#                                </tr>#}
+{#                            {% endfor %}#}
+{#                        {% endif %}#}
+{##}
+{#                    </table>#}
+
+                </div>
+                <div class="col-md-6 column" style="background-color:#eee; padding-top: 20px;">
+                    <img src="/static/images/{{img_with_dots}}" alt="" style="width: 300px; height: 300px">
+
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="/static/js/jquery.3.6.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
