@@ -92,8 +92,8 @@ def detect():
         #     face_detection_threshold=0.0,
         # )
         shutil.rmtree(BASEDIR + '/UALD/universal_landmark_detection/.eval')
-        shutil.rmtree(BASEDIR+ '/UALD/runs/GU2Net_runs/results/single_epoch000')
-        img1 = load_image_path(os.path.join(app.config['UPLOAD_PATH'], imgname))
+        shutil.rmtree(BASEDIR + '/UALD/runs/GU2Net_runs/results/single_epoch000')
+        # img1 = load_image_path(os.path.join(app.config['UPLOAD_PATH'], imgname))
         # emotion, emotion_conf = ob.emotion_detector.detect_facial_emotion(img1)
         new_path = BASEDIR + '/UALD/data/08_11/pngs/' + imgname
         old_path = BASEDIR + '/static/images/' + imgname
@@ -103,18 +103,33 @@ def detect():
         print('start')
 
         os.system('cd UALD/universal_landmark_detection && python ' + yolo_path + ' -f ' + imgname)
+
         print('end')
         before_json = imgname.rfind('.')
         file_name = imgname[:before_json]
         img_with_dots = file_name + '.png'
 
-        result_old_path = BASEDIR + '/UALD/universal_landmark_detection/.eval/.._runs_GU2Net_runs_results_single_epoch000/chest/images/' + img_with_dots
-        result_new_path = BASEDIR + '/static/images/' + img_with_dots
-        shutil.copy(result_old_path, result_new_path)
+        txt_path = BASEDIR + '/UALD/universal_landmark_detection/.eval/.._runs_GU2Net_runs_results_single_epoch000/chest/images/' + file_name + '.txt'
+        with open(txt_path, 'r') as f:
+            angles = f.readlines()
 
-        print('-' * 50)
 
-        return render_template('image.html', imgname=imgname, img_with_dots=img_with_dots)
+
+        result_old_path = BASEDIR + '/UALD/universal_landmark_detection/.eval/.._runs_GU2Net_runs_results_single_epoch000/chest/images/'
+        result_new_path = BASEDIR + '/static/images/'
+        shutil.copy(result_old_path + img_with_dots, result_new_path + img_with_dots)
+
+        angle_name = ['CE角', '臼顶倾斜角','Sharp角','头臼指数']
+        reference = ['20°-40°','<10°','≤40°','>75']
+        left = angles[:4]
+        right = angles[4:]
+        for i in range(len(left)-1):
+            left[i] = left[i] + '°'
+        for i in range(len(right)-1):
+            right[i] = right[i] + '°'
+        angle_value = zip(angle_name,reference,left,right)
+
+        return render_template('image.html', imgname=imgname, img_with_dots=img_with_dots, angle_value = angle_value)
         # return render_template('image.html', imgname=imgname, emotion=emotion, emotion_conf=emotion_conf,
         #                        img_with_dots=img_with_dots)
 

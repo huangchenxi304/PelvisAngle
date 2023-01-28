@@ -32,17 +32,25 @@
                         Recognition Outcome
                     </h4>
 
-{#                    <table class="table table-bordered">#}
-{#                        {% if emotion_conf %}#}
-{#                            {% for emotion, percent in emotion_conf.items() %}#}
-{#                                <tr>#}
-{#                                    <td> {{ emotion }} </td>#}
-{#                                    <td> {{ percent }}% </td>#}
-{#                                </tr>#}
-{#                            {% endfor %}#}
-{#                        {% endif %}#}
-{##}
-{#                    </table>#}
+                    <table class="table table-bordered">
+                        {% if angle_value %}
+                            <tr>
+                                <th>指标</th>
+                                <th>参考值</th>
+                                <th>测量值-左</th>
+                                <th>测量值-右</th>
+                            </tr>
+                            {% for name,ref,left,right in angle_value %}
+                                <tr>
+                                    <td> {{ name }} </td>
+                                    <td> {{ ref }} </td>
+                                    <td> {{ left }} </td>
+                                    <td> {{ right }} </td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+
+                    </table>
 
                 </div>
                 <div class="col-md-6 column" style="background-color:#eee; padding-top: 20px;">
