@@ -259,7 +259,7 @@ def evaluate(input_path, output_path, phase, save_img=True, assigned=False, IS_D
 
         text_dic = {'LCE_angle': 90 - LCE_angle, 'RCE_angle': 90 - RCE_angle, 'Ltonnis': Ljdqxj, 'Rronnis': Rjdqxj,
                     'Lsharp_angle': Lsharp_angle, 'Rsharp_angle': Rsharp_angle, 'LAHI': LAHI, 'RAHI': RAHI}
-        draw_text_index(img, text_dic, DRAW_TEXT_SIZE_FACTOR[dataset])
+        # draw_text_index(img, text_dic, DRAW_TEXT_SIZE_FACTOR[dataset])
 
         before_json = name.rfind('.')
         file_name = name[:before_json]

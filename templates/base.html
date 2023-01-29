@@ -19,51 +19,88 @@
 
         </div>
     </div>
-    <div class="container">
-        <div>
+{#    <div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>#}
+{#        <div class="modal-dialog" role="document">#}
+{#            <div class="modal-content">#}
+{#                <div class="modal-header">#}
+{#                    <h4 class="modal-title" id="myModalLabel">提示</h4>#}
+{#                </div>#}
+{#                <div class="modal-body">#}
+{#                    请稍候。。。<span id="result"></span>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
 
-            {% block uploadpart %}
+
+    <div  class="row" style="padding: 10px ; background-color:#eee;" >
+{#        <div style="background-color:#eee; padding-top: 20px; width: 100%">#}
+
+        {% block uploadpart %}
 {#            使用block从image.html中调用#}
-            {% endblock %}
+        {% endblock %}
+        {% if  img_with_dots %}
+        <div class="col-3">
 
-            {% if  img_with_dots %}
-                <div class="col-6 column" style="background-color:#eee; padding-top: 20px;">
-                    <h4>
-                        分析结果
-                    </h4>
+            <h4>
+                分析结果
+            </h4>
 
-                    <table class="table table-bordered">
-                        {% if angle_value %}
-                            <tr>
-                                <th>指标</th>
-                                <th>参考值</th>
-                                <th>测量值-左</th>
-                                <th>测量值-右</th>
-                            </tr>
-                            {% for name,ref,left,right in angle_value %}
-                                <tr>
-                                    <td> {{ name }} </td>
-                                    <td> {{ ref }} </td>
-                                    <td> {{ left }} </td>
-                                    <td> {{ right }} </td>
-                                </tr>
-                            {% endfor %}
-                        {% endif %}
+            <table class="table table-bordered">
+                {% if angle_value %}
+                    <tr>
+                        <th>指标</th>
+                        <th>参考值</th>
+                        <th>测量值-左</th>
+                        <th>测量值-右</th>
+                    </tr>
+                    {% for name,ref,left,right in angle_value %}
+                        <tr>
+                            <td> {{ name }} </td>
+                            <td> {{ ref }} </td>
+                            <td> {{ left }} </td>
+                            <td> {{ right }} </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
 
-                    </table>
-
-                </div>
-                <div class="col-6 column" style="background-color:#eee; padding-top: 20px;">
-                    <img src="/static/images/{{img_with_dots}}" alt="" style="width: 512px; height: 512px">
-
-                </div>
-            {% endif %}
+            </table>
         </div>
+
+        <div class="col-4">
+            <img src="/static/images/{{img_with_dots}}" alt="" style="width: 512px; height: 512px">
+        </div>
+
+
+
+
+
+
+        {% endif %}
+
     </div>
 
     <script src="/static/js/jquery.3.6.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        {#//显示#}
+        {#$('#loading').modal('show');#}
+        {#//影藏#}
+        {#$('#loading').modal('hide');#}
+
+
+        $(function() {
+            $(".btn").click(function(){
+                $(this).button('loading').delay(10000).queue(function() {
+                 $(this).button('reset');
+                // $(this).dequeue();
+                });
+            });
+        });
+
+    </script>
+
 </body>
 
 </html>
