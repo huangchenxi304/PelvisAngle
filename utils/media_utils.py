@@ -10,8 +10,8 @@ import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
-from emotion_analyzer.exceptions import InvalidImage
-from emotion_analyzer.validators import is_valid_img
+from utils.exceptions import InvalidImage
+from utils.validators import is_valid_img
 
 
 # truetype font

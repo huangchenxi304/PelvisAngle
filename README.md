@@ -171,10 +171,11 @@ emotion_recognizer.emotion_analysis_video(
 ```
 
 ### Emotion recognition using an image
+
 ```python
 # Inside project root
-from emotion_analyzer.media_utils import load_image_path
-from emotion_analyzer.emotion_detector import EmotionDetector
+from utils.media_utils import load_image_path
+from utils.emotion_detector import EmotionDetector
 
 emotion_detector = EmotionDetector(
     model_loc="models",
@@ -192,8 +193,8 @@ All the face detectors are based on a common abstract class and have a common de
 
 ```python
 # import the face detector you want, it follows absolute imports
-from emotion_analyzer.media_utils import load_image_path
-from emotion_analyzer.face_detection_dlib import FaceDetectorDlib
+from utils.media_utils import load_image_path
+from utils.face_detection_dlib import FaceDetectorDlib
 
 face_detector = FaceDetectorDlib(model_type="hog")
 # Load the image in RGB format
