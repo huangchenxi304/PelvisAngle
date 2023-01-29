@@ -39,7 +39,6 @@ def home():
 def detect():
     if request.method == 'GET':
         imgname = request.args.get('imgname')
-        from utils.media_utils import load_image_path
 
         shutil.rmtree(BASEDIR + '/UALD/universal_landmark_detection/.eval')
         shutil.rmtree(BASEDIR + '/UALD/runs/GU2Net_runs/results/single_epoch000')
