@@ -25,7 +25,7 @@ transform_params: # data_aug
 mix_step: 1 # mix_training batch step: 0 for no mix
 
 dataset:
-  name_list: [ 'chest' ]
+  name_list: [ 'gupen' ]
   loss_weights: [ 1, ]
   batch_size_dic: # this will override that of data_loader in train stage
     chest: 4
@@ -39,16 +39,6 @@ dataset:
     use_abnormal: False
     chest_set: [ 'CHN' ] #, 'MCU']
     exclude_list: # initial -5,  than -4
-      - CHNCXR_0059_0
-      - CHNCXR_0178_0
-      - CHNCXR_0228_0
-      - CHNCXR_0267_0
-      - CHNCXR_0295_0
-
-      - CHNCXR_0310_0
-      - CHNCXR_0285_0
-      - CHNCXR_0276_0
-      - CHNCXR_0303_0
 
 
 dataloader:
