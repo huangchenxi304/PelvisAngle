@@ -16,14 +16,14 @@ from model.utils import mkdir, toYaml, dis2, colorRGB, getPointsFromHeatmap
 PATH_DIC = {
     'cephalometric': '../data/ISBI2015_ceph/raw',
     'hand': '../data/hand/jpg',
-    'chest': '../data/08_11/pngs',
+    'gupen': '../data/gupen/pngs',
 }
 
 FONT_PATH = './times.ttf'
 THRESHOLD = [2, 2.5, 3, 4, 6, 9, 10]
 CEPH_PHYSICAL_FACTOR = 0.46875
 WRIST_WIDTH = 50  # mm
-DRAW_TEXT_SIZE_FACTOR = {'cephalometric': 1.13, 'hand': 1, 'chest': 1.39}
+DRAW_TEXT_SIZE_FACTOR = {'cephalometric': 1.13, 'hand': 1, 'gupen': 1.39}
 CLASSES = ["LFH1", "LFH2", "LFH3", "LFHCE", "LIPSS", "LIPTE", "LOPAC", "RFH1", "RFH2", "RFH3", "RFHCE", "RIPSS",
            "RIPTE", "ROPAC"]
 

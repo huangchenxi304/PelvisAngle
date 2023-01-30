@@ -28,16 +28,16 @@ dataset:
   name_list: [ 'gupen' ]
   loss_weights: [ 1, ]
   batch_size_dic: # this will override that of data_loader in train stage
-    chest: 4
+    gupen: 4
 
 
-  chest:
-    prefix: '../data/08_11'
+  gupen:
+    prefix: '../data/gupen'
     sigma: 3
     num_landmark: 14
     size: [ 512, 512 ] # resize
     use_abnormal: False
-    chest_set: [ 'CHN' ] #, 'MCU']
+    gupen_set: [ 'CHN' ] #, 'MCU']
     exclude_list: # initial -5,  than -4
 
 
@@ -62,7 +62,7 @@ dataloader:
     shuffle: true
 
 
-chest_net:
+gupen_net:
   in_channels: 1
   out_channels: 14
 model: 'unet2d'  # which model to use

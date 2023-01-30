@@ -1,7 +1,7 @@
-from .chest import Chest
+from .gupen import gupen
 
 
 def get_dataset(s):
     return {
-        'chest': Chest
+        'gupen': gupen
     }[s.lower()]

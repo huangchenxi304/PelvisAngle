@@ -22,7 +22,7 @@ network: The local network is built upon the idea of universal U-Net to learn mu
 network is a parallelly-duplicated sequential of dilated convolutions that extract global features to further
 disambiguate the landmark locations. It is worth mentioning that the new model design requires much fewer parameters
 than models with standard convolutions to train. We evaluate our YOLO model on three X-ray datasets of 1,588 images on
-the head, hand, and chest, collectively contributing 62 landmarks. The experimental results show that our proposed
+the head, hand, and gupen, collectively contributing 62 landmarks. The experimental results show that our proposed
 universal model behaves largely better than any previous models trained on multiple datasets. It even beats the
 performance of the model that is trained separately for every single dataset.
 
@@ -52,7 +52,7 @@ git clone https://github.com/ICT-MIRACLE-lab/YOLO_Universal_Anatomical_Landmark_
 
 Download the [head](http://www-o.ntust.edu.tw/~cweiwang/ISBI2015/challenge1/)
 , [hand](https://ipilab.usc.edu/research/baaweb)
-, [chest](https://www.kaggle.com/nikhilpandey360/chest-xray-masks-and-labels) datasets.
+, [gupen](https://www.kaggle.com/nikhilpandey360/gupen-xray-masks-and-labels) datasets.
 
 Prepare datasets in the following directory structure.
 
@@ -67,11 +67,11 @@ Prepare datasets in the following directory structure.
           # [download here](https://github.com/christianpayer/MedicalDataAugmentationTool-HeatmapRegression/blob/master/hand_xray/hand_xray_dataset/setup/all.csv)
         * jpg
             * \*.jpg
-    * chest
+    * gupen
         * pngs
             * CHNCXR_\*.png
         * labels
-            * CHNCXR\_\*.txt # unzip [chest_labels.zip](data/chest_labels.zip)
+            * CHNCXR\_\*.txt # unzip [gupen_labels.zip](data/gupen_labels.zip)
 * universal\_landmark\_detection # working directory
 
 Now , `cd uinversal_landmark_detection`.
@@ -163,7 +163,7 @@ python3 evaluation.py -i ../runs/GU2Net_runs/results/test_epochxxx
 3. Run commands:
 
 ```shell
-python3 main.py -d ../runs -r GU2Net -p test -C config.yaml -m gln -l u2net -n chest cephalometric hand -c best.pt
+python3 main.py -d ../runs -r GU2Net -p test -C config.yaml -m gln -l u2net -n gupen cephalometric hand -c best.pt
 python3 evaluation.py -i ../runs/GU2Net/results/test_epoch067
 ```
 

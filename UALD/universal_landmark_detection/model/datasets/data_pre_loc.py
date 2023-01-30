@@ -148,4 +148,4 @@ if __name__ == '__main__':
     # show_heatmap(heatmaps)
 
     # show cut image and the keypoints
-    # show_inputImg_and_keypointLabel('../data/08_11_in/train/imgs/202108110556_6.jpg', heatmaps)
+    # show_inputImg_and_keypointLabel('../data/gupen_in/train/imgs/202108110556_6.jpg', heatmaps)

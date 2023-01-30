@@ -35,10 +35,14 @@ def detect():
     if request.method == 'GET':
         imgname = request.args.get('imgname')
 
-        shutil.rmtree(BASEDIR + '/UALD/universal_landmark_detection/.eval')
-        shutil.rmtree(BASEDIR + '/UALD/runs/GU2Net_runs/results/single_epoch000')
+        need2remove_1 = BASEDIR + '/UALD/universal_landmark_detection/.eval'
+        need2remove_2 = BASEDIR + '/UALD/runs/GU2Net_runs/results/single_epoch000'
+        if os.path.exists(need2remove_1):
+            shutil.rmtree(need2remove_1)
+        if os.path.exists(need2remove_2):
+            shutil.rmtree(need2remove_2)
 
-        new_path = BASEDIR + '/UALD/data/08_11/pngs/' + imgname
+        new_path = BASEDIR + '/UALD/data/gupen/pngs/' + imgname
         old_path = BASEDIR + '/static/images/' + imgname
         shutil.copy(old_path, new_path)
 
@@ -50,11 +54,11 @@ def detect():
         file_name = imgname[:before_json]
         img_with_dots = file_name + '.png'
 
-        txt_path = BASEDIR + '/UALD/universal_landmark_detection/.eval/.._runs_GU2Net_runs_results_single_epoch000/chest/images/' + file_name + '.txt'
+        txt_path = BASEDIR + '/UALD/universal_landmark_detection/.eval/.._runs_GU2Net_runs_results_single_epoch000/gupen/images/' + file_name + '.txt'
         with open(txt_path, 'r') as f:
             angles = f.readlines()
 
-        result_old_path = BASEDIR + '/UALD/universal_landmark_detection/.eval/.._runs_GU2Net_runs_results_single_epoch000/chest/images/'
+        result_old_path = BASEDIR + '/UALD/universal_landmark_detection/.eval/.._runs_GU2Net_runs_results_single_epoch000/gupen/images/'
         result_new_path = BASEDIR + '/static/images/'
         shutil.copy(result_old_path + img_with_dots, result_new_path + img_with_dots)
 
