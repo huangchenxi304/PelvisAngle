@@ -28,28 +28,28 @@ dataset: !!python/object:model.utils.yamlConfig.EasyDict
     chest: !!python/object:model.utils.yamlConfig.EasyDict
       opt:
         chest_set:
-        - CHN
+          - CHN
         exclude_list:
-        - CHNCXR_0059_0
-        - CHNCXR_0178_0
-        - CHNCXR_0228_0
-        - CHNCXR_0267_0
-        - CHNCXR_0295_0
-        - CHNCXR_0310_0
-        - CHNCXR_0285_0
-        - CHNCXR_0276_0
-        - CHNCXR_0303_0
+          - CHNCXR_0059_0
+          - CHNCXR_0178_0
+          - CHNCXR_0228_0
+          - CHNCXR_0267_0
+          - CHNCXR_0295_0
+          - CHNCXR_0310_0
+          - CHNCXR_0285_0
+          - CHNCXR_0276_0
+          - CHNCXR_0303_0
         num_landmark: 14
         prefix: ../data/08_11
         sigma: 3
         size:
-        - 512
-        - 512
+          - 512
+          - 512
         use_abnormal: false
     loss_weights:
-    - 1
+      - 1
     name_list:
-    - chest
+      - chest
 display_freq: 2
 epochs: 100
 eval_freq: 2
@@ -58,11 +58,11 @@ gln: !!python/object:model.utils.yamlConfig.EasyDict
     globalNet_params: !!python/object:model.utils.yamlConfig.EasyDict
       opt:
         dilations:
-        - 1
-        - 2
-        - 5
-        - 2
-        - 1
+          - 1
+          - 2
+          - 5
+          - 2
+          - 1
         kernel_size: 3
         scale_factor: 0.25
     localNet: unet2d
@@ -71,11 +71,11 @@ gln2: !!python/object:model.utils.yamlConfig.EasyDict
     globalNet_params: !!python/object:model.utils.yamlConfig.EasyDict
       opt:
         dilations:
-        - 1
-        - 2
-        - 5
-        - 2
-        - 1
+          - 1
+          - 2
+          - 5
+          - 2
+          - 1
         kernel_size: 3
         scale_factor: 0.25
     localNet: unet2d
@@ -122,8 +122,8 @@ transform_params: !!python/object:model.utils.yamlConfig.EasyDict
     axis: 1
     flip_rate: 0
     offsets:
-    - 10
-    - 10
+      - 10
+      - 10
     rotate_rate: 0.1
     translate_rate: 0.1
 use_background_channel: false

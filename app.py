@@ -1,14 +1,9 @@
-import sys
-
-from flask import Flask, redirect, url_for, render_template, request, Response
 import os
-import time
 import shutil
-import numpy as np
-from datetime import datetime
-from werkzeug.utils import secure_filename
+import time
 
-from typing import Dict, List
+from flask import Flask, render_template, request
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 

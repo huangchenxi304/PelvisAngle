@@ -1,17 +1,17 @@
+import argparse
+import math
 import os
 from collections.abc import Iterable
-import argparse
 from functools import partial
+from math import pi as PI
+
+import numpy as np
 from PIL import Image
 from PIL import ImageDraw, ImageFont
-from math import pi as PI
-import math
-from tqdm import tqdm
-import scipy.io as sio
 from scipy.optimize import linear_sum_assignment as assign
-import numpy as np
+from tqdm import tqdm
 
-from model.utils import mkdir, toYaml, dis2, colorRGB, getPointsFromHeatmap, get_config
+from model.utils import mkdir, toYaml, dis2, colorRGB, getPointsFromHeatmap
 
 PATH_DIC = {
     'cephalometric': '../data/ISBI2015_ceph/raw',
@@ -152,7 +152,7 @@ def AHI(FHCE, FH3, OPAC):
 
     distance_A = distance_H / 2 + (abs(OPAC[0] - FHCE[0]))
 
-    ahi = distance_A / distance_H *100
+    ahi = distance_A / distance_H * 100
 
     return ahi
 
@@ -265,7 +265,7 @@ def evaluate(input_path, output_path, phase, save_img=True, assigned=False, IS_D
         file_name = name[:before_json]
         img.save(out_img_path + '/' + file_name + '.png')
 
-        text_list = [90 - LCE_angle, Ljdqxj,Lsharp_angle,LAHI,90 - RCE_angle,Rjdqxj,Rsharp_angle,RAHI]
+        text_list = [90 - LCE_angle, Ljdqxj, Lsharp_angle, LAHI, 90 - RCE_angle, Rjdqxj, Rsharp_angle, RAHI]
 
         # text_new_dict = {'CE角': str(round(90 - LCE_angle)) + ',' + str(round(90 - RCE_angle)),
         #                  '臼顶倾斜角': str(round(Ljdqxj)) + ',' + str(round(Rjdqxj)),
@@ -276,9 +276,7 @@ def evaluate(input_path, output_path, phase, save_img=True, assigned=False, IS_D
 
         with open(txt_path, 'w') as f:
             for t in text_list:
-
-                f.write(str(round(t,1)) + '\n')
-
+                f.write(str(round(t, 1)) + '\n')
 
     if assigned:
         print('assigned...')

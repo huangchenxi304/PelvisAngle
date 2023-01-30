@@ -11,14 +11,14 @@
 </head>
 
 <body>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <div class="jumbotron jumbotron-fluid bg-info text-white">
-        <div class="container">
-            <h1 class="text-center">Pelvis angle System</h1>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<div class="jumbotron jumbotron-fluid bg-info text-white">
+    <div class="container">
+        <h1 class="text-center">Pelvis angle System</h1>
 
-        </div>
     </div>
+</div>
 {#    <div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>#}
 {#        <div class="modal-dialog" role="document">#}
 {#            <div class="modal-content">#}
@@ -33,13 +33,13 @@
 {#    </div>#}
 
 
-    <div  class="row" style="padding: 10px ; background-color:#eee;" >
-{#        <div style="background-color:#eee; padding-top: 20px; width: 100%">#}
+<div class="row" style="padding: 10px ; background-color:#eee;">
+    {#        <div style="background-color:#eee; padding-top: 20px; width: 100%">#}
 
-        {% block uploadpart %}
-{#            使用block从image.html中调用#}
-        {% endblock %}
-        {% if  img_with_dots %}
+    {% block uploadpart %}
+        {#            使用block从image.html中调用#}
+    {% endblock %}
+    {% if  img_with_dots %}
         <div class="col-3">
 
             <h4>
@@ -68,7 +68,7 @@
         </div>
 
         <div class="col-4">
-            <img src="/static/images/{{img_with_dots}}" alt="" style="width: 512px; height: 512px">
+            <img src="/static/images/{{ img_with_dots }}" alt="" style="width: 512px; height: 512px">
         </div>
 
 
@@ -76,30 +76,30 @@
 
 
 
-        {% endif %}
+    {% endif %}
 
-    </div>
+</div>
 
-    <script src="/static/js/jquery.3.6.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script>
-        {#//显示#}
-        {#$('#loading').modal('show');#}
-        {#//影藏#}
-        {#$('#loading').modal('hide');#}
+<script src="/static/js/jquery.3.6.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    {#//显示#}
+    {#$('#loading').modal('show');#}
+    {#//影藏#}
+    {#$('#loading').modal('hide');#}
 
 
-        $(function() {
-            $(".btn").click(function(){
-                $(this).button('loading').delay(10000).queue(function() {
-                 $(this).button('reset');
+    $(function () {
+        $(".btn").click(function () {
+            $(this).button('loading').delay(10000).queue(function () {
+                $(this).button('reset');
                 // $(this).dequeue();
-                });
             });
         });
+    });
 
-    </script>
+</script>
 
 </body>
 

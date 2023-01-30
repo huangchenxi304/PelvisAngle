@@ -1,19 +1,13 @@
-import os
-from tqdm import tqdm
-from PIL import Image
-import random
 import shutil
 
-import SimpleITK as sitk
-import numpy as np
-import pandas as pd
-
 import torch
+from PIL import Image
 from torch.utils.data import DataLoader
+from tqdm import tqdm
 
-from .utils import *
 from .datasets import get_dataset
 from .networks import get_loss, get_optim, get_net, get_scheduler
+from .utils import *
 
 
 class Runner(object):
@@ -47,7 +41,7 @@ class Runner(object):
             trans_dic = self.opts['transform_params'] if s == 'train' else {}
             file_name = self.file_name
             for name in self.name_list:
-                d = get_dataset(name)(file_name = file_name, phase=s, transform_params=trans_dic,
+                d = get_dataset(name)(file_name=file_name, phase=s, transform_params=trans_dic,
                                       use_background_channel=use_background_channel, **d_opts[name])
                 dataset_list.append(d)
                 loader_opts = self.opts.dataloader[s]
@@ -71,7 +65,7 @@ class Runner(object):
             if step > 0:
                 self.train_name_list = ['mix']
                 self.train_loader_list = [MixIter(self.train_loader_list, step)]
-        elif self.phase == 'test' :
+        elif self.phase == 'test':
             _get('test')
         elif self.phase == 'single':
             _get('single')
@@ -90,6 +84,7 @@ class Runner(object):
                     self.optim, **learn[learn['scheduler']])
             else:
                 self.scheduler = None
+
         modelname = self.opts.model
         model_opts = self.opts[modelname] if modelname in self.opts else {}
         localNet = model_opts['localNet'] if 'localNet' in model_opts else None
@@ -119,7 +114,7 @@ class Runner(object):
         else:
             net_params = net_params = self.opts[modelname] if modelname in self.opts else dict()
             net_params.update(channel_params)
-            self.model = get_net(modelname)(** net_params)
+            self.model = get_net(modelname)(**net_params)
         if torch.cuda.is_available():
             self.model = self.model.cuda()
             # self.model = torch.nn.DataParallel(self.model)  # TODO
@@ -203,11 +198,12 @@ class Runner(object):
                         saveImage(pre + '_output', out)
                         comp = np.concatenate((visualMultiChannel(gt), out), axis=-1)
                         saveImage(pre + '_gt-pred', comp)
+
         self.model.eval()  # important
         if epoch is None:
             epoch = self.start_epoch
         prefix = self.run_dir + '/results/' + self.phase + \
-            '_epoch{epoch:03d}'.format(epoch=epoch)
+                 '_epoch{epoch:03d}'.format(epoch=epoch)
         loss_dir = self.run_dir + '/results/loss'
         mkdir(loss_dir)
         mkdir(prefix)
@@ -237,8 +233,11 @@ class Runner(object):
                     loss = self.val_loss(data_dic['output'], data_dic['gt'])  # TODO
                     if 'rec_image' in data_dic:
                         loss += get_loss('l2')(**self.opts.learning.l2)(data_dic['input'], data_dic['rec_image'])
-                    pbar.set_description("[{curPhase} {dataname}] epoch:{ep:>3d}/{allep:<3d}, batch:{num:>6d}/{batch_num:<6d}, train:{ls:.6f}, vali:{val_loss:.6f}".format(dataname=name.rjust(13),
-                                                                                                                                                                           ep=epoch, allep=allep, num=(i + 1), batch_num=batch_num, val_loss=loss.item(), ls=self.train_loss, curPhase=s.ljust(8)))
+                    pbar.set_description(
+                        "[{curPhase} {dataname}] epoch:{ep:>3d}/{allep:<3d}, batch:{num:>6d}/{batch_num:<6d}, train:{ls:.6f}, vali:{val_loss:.6f}".format(
+                            dataname=name.rjust(13),
+                            ep=epoch, allep=allep, num=(i + 1), batch_num=batch_num, val_loss=loss.item(),
+                            ls=self.train_loss, curPhase=s.ljust(8)))
                     name_loss_dic['_'.join(data_dic['name'])] = loss.item()
             if 'gt' in data_dic:
                 mean = np.mean(list(name_loss_dic.values()))
@@ -263,7 +262,8 @@ class Runner(object):
         eval_freq = self.opts.eval_freq
         for epoch in pbar:
             self.update_params(epoch, pbar)
-            plot_2d(self.run_dir + '/learning_rate.png', list(range(len(self.lr_list))), self.lr_list, 'step', 'lr', 'lr-step')
+            plot_2d(self.run_dir + '/learning_rate.png', list(range(len(self.lr_list))), self.lr_list, 'step', 'lr',
+                    'lr-step')
             if epoch % eval_freq == 0 or epoch == endEpoch:
                 val_loss = self.validateTest(epoch)
                 xs.append(epoch)
@@ -318,6 +318,8 @@ class Runner(object):
                 self.optim.step()
                 if use_scheduler:
                     self.scheduler.step()  # behind optim.step()
-                pbar.set_description("[train    {dataname}] epoch:{ep:>3d}/{allep:<3d}, batch:{num:>6d}/{batch_num:<6d}, train:{ls:.6f}, best:{val_loss:.6f}".format(
-                    dataname=name.rjust(13), ep=epoch, allep=allep, num=i + 1, batch_num=batch_num, ls=loss.item(), val_loss=self.best_loss))
+                pbar.set_description(
+                    "[train    {dataname}] epoch:{ep:>3d}/{allep:<3d}, batch:{num:>6d}/{batch_num:<6d}, train:{ls:.6f}, best:{val_loss:.6f}".format(
+                        dataname=name.rjust(13), ep=epoch, allep=allep, num=i + 1, batch_num=batch_num, ls=loss.item(),
+                        val_loss=self.best_loss))
             self.train_loss += cur_loss / len(loader)

@@ -1,10 +1,10 @@
 import os
-from PIL import Image
 
 import numpy as np
-import pandas as pd
 import torch
 import torch.utils.data as data
+from PIL import Image
+
 # from data_pre_loc import json_to_numpy
 from .data_pre_loc import json_to_numpy
 from ..utils import gaussianHeatmap, transformer
@@ -12,9 +12,8 @@ from ..utils import gaussianHeatmap, transformer
 
 class Chest(data.Dataset):
 
-
-
-    def __init__(self, prefix, phase, file_name,transform_params=dict(),  sigma=5, num_landmark=14, size=[512, 512], use_abnormal=True, chest_set=None, exclude_list=None,use_background_channel=False):
+    def __init__(self, prefix, phase, file_name, transform_params=dict(), sigma=5, num_landmark=14, size=[512, 512],
+                 use_abnormal=True, chest_set=None, exclude_list=None, use_background_channel=False):
 
         self.transform = transformer(transform_params)
         self.phase = phase
@@ -24,7 +23,7 @@ class Chest(data.Dataset):
 
         self.pth_Image = os.path.join(prefix, 'pngs')
         self.pth_Label = os.path.join(prefix, 'labels')
-        self.SINGLE = [[9000,9000] for i in range(14)]
+        self.SINGLE = [[9000, 9000] for i in range(14)]
         # self.img_name_list = os.listdir(self.pth_Image)
 
         # file index
@@ -72,8 +71,8 @@ class Chest(data.Dataset):
         li = [self.genHeatmap(point, self.size) for point in points]
         if self.use_background_channel:
             sm = sum(li)
-            sm[sm>1]=1
-            li.append(1-sm)
+            sm[sm > 1] = 1
+            li.append(1 - sm)
         gt = np.array(li)
         img, gt = self.transform(img, gt)
         ret['input'] = torch.FloatTensor(img)
@@ -99,8 +98,8 @@ class Chest(data.Dataset):
         #         points.append(pt)
         reg_points = []
         for p in points:
-            reg_x = round(p[0]/origin_size[0]*self.size[1])
-            reg_y = round(p[1]/origin_size[1]*self.size[0])
+            reg_x = round(p[0] / origin_size[0] * self.size[1])
+            reg_y = round(p[1] / origin_size[1] * self.size[0])
             pt = tuple([reg_x, reg_y])
             reg_points.append(pt)
         return reg_points
@@ -120,5 +119,5 @@ class Chest(data.Dataset):
         arr = np.expand_dims(np.transpose(arr, (1, 0)), 0).astype(np.float)
         # conveting to float is important, otherwise big bug occurs
         for i in range(arr.shape[0]):
-            arr[i] = (arr[i]-arr[i].mean())/(arr[i].std()+1e-20)
+            arr[i] = (arr[i] - arr[i].mean()) / (arr[i].std() + 1e-20)
         return arr, origin_size
