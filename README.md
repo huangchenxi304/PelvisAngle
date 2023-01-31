@@ -16,198 +16,252 @@ web应用框架：flask
 ## 目录
 
 - [界面展示](#界面展示)
-- [Architecture](#architecture)
-- [Setup](#setup)
+- [安装](#安装)
 - [Project Structure](#project-structure)
-- [Usage](#usage)
+- [基本用法](#基本用法)
+- [数据集](#数据集)
+- [训练](#训练)
+- [测试](#测试)
 - [References](#references)
 
-# 界面展示
+## 界面展示
 
 ![](data/1.png)
 
-# Setup
+## 安装
 
-There are multiple ways to set this up.
+**Clone the repo and install dependencies.<br>**
 
-### Clone the repo and install dependencies.<br>
+```shell
+git clone https://github.com/huangchenxi304/PelvisAngle
+pip install - r requirements.txt
+```
+
+## Project Structure
+
+```
+PelvisAngle
+│  app.py
+│  README.md
+│  requirements.txt
+│      
+├─static
+│  ├─css
+│  │      
+│  ├─images
+│  │      1.2.156.112605.215507183267565.210106021535.4.9624.104022.jpg
+│  │      1.2.156.112605.215507183267565.210106021535.4.9624.104022.png
+│  │      
+│  └─js
+│          
+├─templates
+│      base.html
+│      image.html
+│      
+├─UALD
+│  │          
+│  ├─data
+│  │  ├─gupen
+│  │  │  ├─labels
+│  │  │  │      1.3.12.2.1107.5.3.58.40252.12.202101010955490437.json
+│  │  │  │      1.3.12.2.1107.5.3.58.40252.12.202101011540210171.json
+│  │  │  │      ......
+│  │  │  │      
+│  │  │  └─pngs
+│  │  │          1.3.12.2.1107.5.3.58.40252.12.202101010955490437.jpg
+│  │  │          1.3.12.2.1107.5.3.58.40252.12.202101011540210171.jpg
+│  │  │          ......
+│  │          
+│  ├─runs
+│  │  └─unet2d_runs
+│  │  │        config_origin.yaml
+│  │  │        config_train.yaml
+│  │  │   
+│  │  ├─GU2Net_runs
+│  │  │  │  config_origin.yaml
+│  │  │  │  config_single.yaml
+│  │  │  │  config_test.yaml
+│  │  │  │  config_train.yaml
+│  │  │  │  learning_rate.png
+│  │  │  │  loss.png
+│  │  │  │  network_graph.txt
+│  │  │  │  
+│  │  │  ├─checkpoints
+│  │  │  │      best_GU2Net_runs_epoch098_train5234.624233_val1716.078491.pt
+│  │  │  │      best_GU2Net_runs_epoch098_train73.344884_val17.906089.pt
+│  │  │  │      ......
+│  │  │  │      train_val_loss.txt
+│  │  │  │      
+│  │  │  └─results
+│  │  │      ├─loss
+│  │  │      │      epoch_098_loss_54.583926.txt
+│  │  │      │      epoch_099_loss_17.908456.txt
+│  │  │      │      ......
+│  │  │      │      
+│  │  │      ├─single_epoch000
+│  │  │      │  └─gupen
+│  │  │      │          1.2.156.112605.215507183267565.210112031150.4.9460.116412.jpg_gt-pred.png
+│  │  │      │          1.2.156.112605.215507183267565.210112031150.4.9460.116412.jpg_gt.npy
+│  │  │      │          1.2.156.112605.215507183267565.210112031150.4.9460.116412.jpg_gt.png
+│  │  │      │          1.2.156.112605.215507183267565.210112031150.4.9460.116412.jpg_input.npy
+│  │  │      │          
+│  │  │      └─train_epoch099
+│  │  │          └─gupen
+│  │  │                  1.3.46.670589.26.902153.4.20180821.102032.657106.0.jpg_gt-pred.png
+│  │  │                  1.3.46.670589.26.902153.4.20180821.102032.657106.0.jpg_gt.npy
+│  │  │                  1.3.46.670589.26.902153.4.20180821.102032.657106.0.jpg_gt.png
+│  │  │                  1.3.46.670589.26.902153.4.20180821.102032.657106.0.jpg_input.npy               
+│  │          
+│  └─universal_landmark_detection
+│      │  config.yaml
+│      │  evaluation.py
+│      │  main.py
+│      │  
+│      ├─.eval
+│      │  └─.._runs_GU2Net_runs_results_single_epoch000
+│      │      │  distance.yaml
+│      │      │  summary.yaml
+│      │      │  
+│      │      └─gupen
+│      │          ├─gt_laels
+│      │          │      
+│      │          ├─images
+│      │          │      1.2.156.112605.215507183267565.210112031150.4.9460.116412.png
+│      │          │      1.2.156.112605.215507183267565.210112031150.4.9460.116412.txt
+│      │          │      
+│      │          └─labels
+│      │                  1.2.156.112605.215507183267565.210112031150.4.9460.116412.jpg.txt
+│      │                  
+│      └─model
+│          │  runner.py
+│          │  
+│          ├─datasets
+│          │  │  gupen.py
+│          │  │  data_pre_loc.py
+│          │  │  __init__.py
+│          │          
+│          ├─networks
+│          │  │  gln.py
+│          │  │  gln2.py
+│          │  │  globalNet.py
+│          │  │  loss_and_optim.py
+│          │  │  u2net.py
+│          │  │  unet2d.py
+│          │          
+│          ├─utils             
+```
+
+## 基本用法
+
+以flask server运行app.py后，本地浏览器访问http://127.0.0.1:5000
+
+![](data/flask.png)
+
+## 数据集
+
+数据集存放目录如下：
+
+```
+├─UALD
+│  │          
+│  ├─data
+│  │  ├─gupen
+│  │  │  ├─labels
+│  │  │  │      1.3.12.2.1107.5.3.58.40252.12.202101010955490437.json
+│  │  │  │      1.3.12.2.1107.5.3.58.40252.12.202101011540210171.json
+│  │  │  │      ......
+│  │  │  │      
+│  │  │  └─pngs
+│  │  │          1.3.12.2.1107.5.3.58.40252.12.202101010955490437.jpg
+│  │  │          1.3.12.2.1107.5.3.58.40252.12.202101011540210171.jpg
+│  │  │          ......
+```
+
+## 训练
+
+### 1.训练和验证数据集分割（可选）
+
+默认数据集比例训练：验证：测试 = 8：1：1。可根据数据集情况自行确定并修改gupen.py 42、43行代码
+
+gupen.py文件位置为：
+
+```
+├─UALD 
+│  └─universal_landmark_detection             
+│      └─model
+│          ├─datasets
+│          		└─gupen.py
+```
 
 ```python
-git
-clone
-https: // github.com / susantabiswas / realtime - facial - emotion - analyzer.git
-pip
-install - r
-requirements.txt
+        n = len(files)
+        train_num = round(n*0.8)
+        val_num = round(n*0.1)
+        test_num = n - train_num - val_num
 ```
 
-### Docker Image
+### 2.参数设置（必选）
 
-You can pull the docker image for this project and run the code there.<br>
-```docker pull susantabiswas/emotion-analyzer:latest```
+默认为预测单张图片模式【“single”】。训练时应修改main.py中启动参数-p 的默认值为【“train”】
 
-### Dockerfile
-
-You can build the docker image from the docker file present in the repo.
-
-```docker build -t <name> .```
-
-# Project Structure
+main.py文件位置为：
 
 ```
-
-realtime-facial-emotion-analyzer/
-├── Dockerfile
-├── LICENSE
-├── README.md
-├── data
-│   ├── Ubuntu-R.ttf
-│   ├── emojis
-│   │   ├── angry.png
-│   │   ├── disgusted.png
-│   │   ├── fearful.png
-│   │   ├── happy.png
-│   │   ├── neutral.png
-│   │   ├── sad.png
-│   │   └── surprised.png
-│   ├── media
-│   │   ├── 1.JPG
-│   │   ├── 2.JPG
-│   │   ├── 3.JPG
-│   │   ├── 4.JPG
-│   │   └── model_plot.png
-│   └── sample
-│       ├── 1.jpg
-│       └── 2.jpg
-├── emotion_analyzer
-│   ├── emotion_detector.py
-│   ├── emotion_detector_base.py
-│   ├── exceptions.py
-│   ├── face_detection_dlib.py
-│   ├── face_detection_mtcnn.py
-│   ├── face_detection_opencv.py
-│   ├── face_detector.py
-│   ├── logger.py
-│   ├── media_utils.py
-│   ├── model_utils.py
-│   └── validators.py
-├── models
-│   ├── mmod_human_face_detector.dat
-│   ├── opencv_face_detector.pbtxt
-│   ├── opencv_face_detector_uint8.pb
-│   └── shape_predictor_5_face_landmarks.dat
-├── requirements.txt
-├── tests
-│   ├── conftest.py
-│   ├── test_face_detection_dlib.py
-│   ├── test_face_detection_mtcnn.py
-│   ├── test_face_detection_opencv.py
-│   └── test_media_utils.py
-├── training
-│   ├── data_prep.py
-│   ├── facial Emotions.ipynb
-│   └── preprocess.py
-└── video_main.py
+├─UALD                     
+│  └─universal_landmark_detection
+│      └─main.py
 ```
 
-# Usage
 
-### Emotion Recognition
-
-Depending on the use case, whether to aim for accuracy and stability or speed etc., you can pick the face detector.
-Also, there are customization options inside face detectors to decide the facial ROI.
-
-### To analyze facial emotion using a webcam
 
 ```python
-# Inside project root
-import video_main
-
-# You can pick a face detector depending on Acc/speed requirements
-emotion_recognizer = EmotionAnalysisVideo(
-    face_detector="dlib",
-    model_loc="models",
-    face_detection_threshold=0.0,
-)
-emotion_recognizer.emotion_analysis_video(
-    video_path=None,
-    detection_interval=1,
-    save_output=False,
-    preview=True,
-    output_path="data/output.mp4",
-    resize_scale=0.5,
-)
+parser.add_argument("-p", "--phase", choices=['train', 'validate', 'test', 'single'], default='single') 
+# 训练时修改为default='train'
 ```
 
-### To analyze facial emotion using a video file
+### 3.模型选择（可选）
 
-```python
-# Inside project root
-import video_main
+本关键点检测算法提供两种模型：U-Net model和GU2Net model。GU2Net model表现较好。<br>
 
-# You can pick a face detector depending on Acc/speed requirements
-emotion_recognizer = EmotionAnalysisVideo(
-    face_detector="dlib",
-    model_loc="models",
-    face_detection_threshold=0.0,
-)
-emotion_recognizer.emotion_analysis_video(
-    video_path='data/sample/test.mp4',
-    detection_interval=1,
-    save_output=False,
-    preview=True,
-    output_path="data/output.mp4",
-    resize_scale=0.5,
-)
-```
+默认模型为GU2Net model
 
-### Emotion recognition using an image
 
-```python
-# Inside project root
-from emotion_analyzer.media_utils import load_image_path
-from emotion_analyzer.emotion_detector import EmotionDetector
 
-emotion_detector = EmotionDetector(
-    model_loc="models",
-    face_detection_threshold=0.8,
-    face_detector="dlib",
-)
-# Load the test image
-img = load_image_path("data/sample/1.jpg")
-emotion, emotion_conf = emotion_detector.detect_facial_emotion(img)
-```
+若需要使用U-Net model，请修改如下2处参数：
 
-There are 4 face detectors namely dlib (HOG, MMOD), MTCNN, OpenCV (CNN). All the face detectors are based on a common
-abstract class and have a common detection interface **detect_faces(image)**.
 
-```python
-# import the face detector you want, it follows absolute imports
-from emotion_analyzer.media_utils import load_image_path
-from emotion_analyzer.face_detection_dlib import FaceDetectorDlib
 
-face_detector = FaceDetectorDlib(model_type="hog")
-# Load the image in RGB format
-image = load_image_path("data/sample/1.jpg")
-# Returns a list of bounding box coordinates
-bboxes = face_detector.detect_faces(image)
-```
+4.从0开始或载入权重训练（必选）
 
-# Architecture
 
-![architecture](data/media/model_plot.png)<br>
-<br>
 
-# References
+
+
+5.开始训练
+
+
+
+
+
+6.训练结果
+
+
+
+
+
+## 测试
+
+
+
+
+
+## 验证（生成带有预测点和金标准的结果图）
+
+
+
+
+
+## References
 
 The awesome work Davis E. King has done:
 http://dlib.net/cnn_face_detector.py.html,
-https://github.com/davisking/dlib-models<br>
-You can find more about MTCNN from here: https://github.com/ipazc/mtcnn
-<br>
-Dataset used was from Kaggle fer2013
-Challenge [Challenges in Representation Learning: Facial Expression Recognition Challenge](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data)
-<br>
-Emojis used were from https://emojiisland.com/
-<br>
-Ubuntu font license: https://ubuntu.com/legal/font-licence
