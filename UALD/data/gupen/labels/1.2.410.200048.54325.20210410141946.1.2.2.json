@@ -1,0 +1,158 @@
+{
+  "shapes": [
+    {
+      "label": "LFH1",
+      "points": [
+        [
+          2542,
+          1555
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.2.410.200048.54325.20210410141946.1.2.2.jpg"
+    },
+    {
+      "label": "LFH2",
+      "points": [
+        [
+          2351,
+          1836
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.2.410.200048.54325.20210410141946.1.2.2.jpg"
+    },
+    {
+      "label": "LFH3",
+      "points": [
+        [
+          2322,
+          1577
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.2.410.200048.54325.20210410141946.1.2.2.jpg"
+    },
+    {
+      "label": "LFHCE",
+      "points": [
+        [
+          2442,
+          1698
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.2.410.200048.54325.20210410141946.1.2.2.jpg"
+    },
+    {
+      "label": "LIPSS",
+      "points": [
+        [
+          2324,
+          1527
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.2.410.200048.54325.20210410141946.1.2.2.jpg"
+    },
+    {
+      "label": "LIPTE",
+      "points": [
+        [
+          2213,
+          1799
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.2.410.200048.54325.20210410141946.1.2.2.jpg"
+    },
+    {
+      "label": "LOPAC",
+      "points": [
+        [
+          2551,
+          1513
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.2.410.200048.54325.20210410141946.1.2.2.jpg"
+    },
+    {
+      "label": "RFH1",
+      "points": [
+        [
+          856,
+          1582
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.2.410.200048.54325.20210410141946.1.2.2.jpg"
+    },
+    {
+      "label": "RFH2",
+      "points": [
+        [
+          1058,
+          1868
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.2.410.200048.54325.20210410141946.1.2.2.jpg"
+    },
+    {
+      "label": "RFH3",
+      "points": [
+        [
+          1083,
+          1601
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.2.410.200048.54325.20210410141946.1.2.2.jpg"
+    },
+    {
+      "label": "RFHCE",
+      "points": [
+        [
+          946,
+          1727
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.2.410.200048.54325.20210410141946.1.2.2.jpg"
+    },
+    {
+      "label": "RIPSS",
+      "points": [
+        [
+          1070,
+          1567
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.2.410.200048.54325.20210410141946.1.2.2.jpg"
+    },
+    {
+      "label": "RIPTE",
+      "points": [
+        [
+          1187,
+          1843
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.2.410.200048.54325.20210410141946.1.2.2.jpg"
+    },
+    {
+      "label": "ROPAC",
+      "points": [
+        [
+          854,
+          1552
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.2.410.200048.54325.20210410141946.1.2.2.jpg"
+    }
+  ]
+}

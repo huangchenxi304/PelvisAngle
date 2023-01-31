@@ -1,0 +1,158 @@
+{
+  "shapes": [
+    {
+      "label": "LFH1",
+      "points": [
+        [
+          2105,
+          990
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.3.12.2.1107.5.3.58.40252.12.202103261249210125.jpg"
+    },
+    {
+      "label": "LFH2",
+      "points": [
+        [
+          1927,
+          1290
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.3.12.2.1107.5.3.58.40252.12.202103261249210125.jpg"
+    },
+    {
+      "label": "LFH3",
+      "points": [
+        [
+          1877,
+          1035
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.3.12.2.1107.5.3.58.40252.12.202103261249210125.jpg"
+    },
+    {
+      "label": "LFHCE",
+      "points": [
+        [
+          2012,
+          1137
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.3.12.2.1107.5.3.58.40252.12.202103261249210125.jpg"
+    },
+    {
+      "label": "LIPSS",
+      "points": [
+        [
+          1887,
+          1003
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.3.12.2.1107.5.3.58.40252.12.202103261249210125.jpg"
+    },
+    {
+      "label": "LIPTE",
+      "points": [
+        [
+          1781,
+          1264
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.3.12.2.1107.5.3.58.40252.12.202103261249210125.jpg"
+    },
+    {
+      "label": "LOPAC",
+      "points": [
+        [
+          2118,
+          966
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.3.12.2.1107.5.3.58.40252.12.202103261249210125.jpg"
+    },
+    {
+      "label": "RFH1",
+      "points": [
+        [
+          502,
+          1108
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.3.12.2.1107.5.3.58.40252.12.202103261249210125.jpg"
+    },
+    {
+      "label": "RFH2",
+      "points": [
+        [
+          698,
+          1382
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.3.12.2.1107.5.3.58.40252.12.202103261249210125.jpg"
+    },
+    {
+      "label": "RFH3",
+      "points": [
+        [
+          707,
+          1123
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.3.12.2.1107.5.3.58.40252.12.202103261249210125.jpg"
+    },
+    {
+      "label": "RFHCE",
+      "points": [
+        [
+          582,
+          1235
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.3.12.2.1107.5.3.58.40252.12.202103261249210125.jpg"
+    },
+    {
+      "label": "RIPSS",
+      "points": [
+        [
+          697,
+          1086
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.3.12.2.1107.5.3.58.40252.12.202103261249210125.jpg"
+    },
+    {
+      "label": "RIPTE",
+      "points": [
+        [
+          813,
+          1333
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.3.12.2.1107.5.3.58.40252.12.202103261249210125.jpg"
+    },
+    {
+      "label": "ROPAC",
+      "points": [
+        [
+          471,
+          1068
+        ]
+      ],
+      "shape_type": "point",
+      "imagePath": "..\\imgs\\1.3.12.2.1107.5.3.58.40252.12.202103261249210125.jpg"
+    }
+  ]
+}
