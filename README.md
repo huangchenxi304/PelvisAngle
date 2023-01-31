@@ -46,6 +46,7 @@ pip install - r requirements.txt
 
 ## Project Structure
 
+```
 PelvisAngle
 │  app.py（★★★前端与后端交互的地方）
 │  README.md（☆☆☆）
@@ -121,9 +122,7 @@ PelvisAngle
 │  └─universal_landmark_detection
 │      │  config.yaml（★★☆一些次要配置，比如关键点数量，图片resize大小,数据集路径等等）
 │      │  evaluation.py（★★★用于生成带关键点的结果图，以及预测关键点坐标，计算CE角等所有角度指标并保存）
-│      │  main.py（★★★★★配置主要参数，如使用的模型、权重文件、是要训练还是测试等等。也是程序入口，训练、测试时运行这
-
-│      │			个文件）
+│      │  main.py（★★★★★配置主要参数，如使用的模型、权重文件、是要训练还是测试等等。也是程序入口，训练、测试时运行这个文件）		
 │      │  
 │      ├─.eval（★★★存放预测结果，包括带关键点的图、各个角度值、预测关键点坐标。还存了预测表现的评价）
 │      │  └─.._runs_GU2Net_runs_results_single_epoch000
@@ -156,7 +155,10 @@ PelvisAngle
 │          │  │  u2net.py
 │          │  │  unet2d.py
 │          │          
-│          ├─utils（☆☆☆一些模型工具类）             
+│          ├─utils（☆☆☆一些模型工具类） 
+```
+
+​            
 
 ## 基本用法
 
