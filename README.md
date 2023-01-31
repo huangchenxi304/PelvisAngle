@@ -1,21 +1,35 @@
 # Pelvis Angle System
 
 这是一个自动识别骨盆关键点并计算角度的带前端的系统
-<br>
 
 web应用框架：flask
 
-<br>
-
 前端：HTML+boostrap+js
-
-<br>
 
 关键点识别模型：[YOLO](https://github.com/MIRACLE-Center/YOLO_Universal_Anatomical_Landmark_Detection)
 
 ## 目录
 
-[TOC]
+[Pelvis Angle System](#pelvis-angle-system)
+
+- [目录](#目录)
+- [界面展示](#界面展示)
+- [安装](#安装)
+- [Project Structure](#project-structure)
+- [基本用法](#基本用法)
+- [数据集](#数据集)
+- [训练](#训练)
+  - [1.训练和验证数据集分割（可选）](#1训练和验证数据集分割可选)
+  - [2.设置关键点数量（可选）](#2设置关键点数量可选)
+  - [3.参数设置（必选）](#3参数设置必选)
+  - [4.模型选择（可选）](#4模型选择可选)
+  - [5.从0开始或载入权重训练（必选）](#5从0开始或载入权重训练必选)
+  - [6.开始训练](#6开始训练)
+  - [7.训练结果/测试结果](#7训练结果测试结果)
+- [测试](#测试)
+- [验证（生成带有预测点和金标准的结果图）](#验证生成带有预测点和金标准的结果图)
+- [References](#references)
+- [Acknowledge:bouquet::bouquet::bouquet:](#acknowledgebouquetbouquetbouquet)
 
 ## 界面展示
 
@@ -32,7 +46,6 @@ pip install - r requirements.txt
 
 ## Project Structure
 
-```
 PelvisAngle
 │  app.py（★★★前端与后端交互的地方）
 │  README.md（☆☆☆）
@@ -108,7 +121,9 @@ PelvisAngle
 │  └─universal_landmark_detection
 │      │  config.yaml（★★☆一些次要配置，比如关键点数量，图片resize大小,数据集路径等等）
 │      │  evaluation.py（★★★用于生成带关键点的结果图，以及预测关键点坐标，计算CE角等所有角度指标并保存）
-│      │  main.py（★★★★★配置主要参数，如使用的模型、权重文件、是要训练还是测试等等。也是程序入口，训练、测试时运行这│      │			个文件）
+│      │  main.py（★★★★★配置主要参数，如使用的模型、权重文件、是要训练还是测试等等。也是程序入口，训练、测试时运行这
+
+│      │			个文件）
 │      │  
 │      ├─.eval（★★★存放预测结果，包括带关键点的图、各个角度值、预测关键点坐标。还存了预测表现的评价）
 │      │  └─.._runs_GU2Net_runs_results_single_epoch000
@@ -142,7 +157,6 @@ PelvisAngle
 │          │  │  unet2d.py
 │          │          
 │          ├─utils（☆☆☆一些模型工具类）             
-```
 
 ## 基本用法
 
