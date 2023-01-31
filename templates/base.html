@@ -19,18 +19,6 @@
 
     </div>
 </div>
-{#    <div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>#}
-{#        <div class="modal-dialog" role="document">#}
-{#            <div class="modal-content">#}
-{#                <div class="modal-header">#}
-{#                    <h4 class="modal-title" id="myModalLabel">提示</h4>#}
-{#                </div>#}
-{#                <div class="modal-body">#}
-{#                    请稍候。。。<span id="result"></span>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
 
 
 <div class="row" style="padding: 10px ; background-color:#eee;">
@@ -83,23 +71,7 @@
 <script src="/static/js/jquery.3.6.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script>
-    {#//显示#}
-    {#$('#loading').modal('show');#}
-    {#//影藏#}
-    {#$('#loading').modal('hide');#}
 
-
-    $(function () {
-        $(".btn").click(function () {
-            $(this).button('loading').delay(10000).queue(function () {
-                $(this).button('reset');
-                // $(this).dequeue();
-            });
-        });
-    });
-
-</script>
 
 </body>
 

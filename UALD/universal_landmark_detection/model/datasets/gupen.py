@@ -24,19 +24,9 @@ class gupen(data.Dataset):
         self.pth_Image = os.path.join(prefix, 'pngs')
         self.pth_Label = os.path.join(prefix, 'labels')
         self.SINGLE = [[9000, 9000] for i in range(14)]
-        # self.img_name_list = os.listdir(self.pth_Image)
 
-        # file index
-        # files = [i[:-4] for i in sorted(os.listdir(self.pth_Image))]
         files = os.listdir(self.pth_Image)
-        # if gupen_set is not None:
-        #     files = [f for f in files if any(
-        #         f.startswith(st) for st in gupen_set)]
-        # # if exclude_list is not None:
-        # #     st = set(exclude_list)
-        # #     files = [f for f in files if f not in st]
-        # if not use_abnormal:
-        #     files = [f for f in files if f[-1] == '0']
+
 
         n = len(files)
         train_num = round(n*0.7)
@@ -83,19 +73,13 @@ class gupen(data.Dataset):
         return len(self.indexes)
 
     def readLandmark(self, index, origin_size):
-        # path = os.path.join(self.pth_Label, name+'.txt')
         points = []
         img_name = self.indexes[index]
         before_json = img_name.rfind('.')
         file_name = img_name[:before_json]
         mask_name = file_name + '.json'
         points = json_to_numpy(os.path.join(self.pth_Label, mask_name))
-        # with open(path, 'r') as f:
-        #     n = int(f.readline())
-        #     for i in range(n):
-        #         ratios = [float(i) for i in f.readline().split()]
-        #         pt = tuple([round(r*sz) for r, sz in zip(ratios, self.size)])
-        #         points.append(pt)
+
         reg_points = []
         for p in points:
             reg_x = round(p[0] / origin_size[0] * self.size[1])
