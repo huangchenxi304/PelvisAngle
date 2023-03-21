@@ -92,4 +92,5 @@ def upload():
 
 if __name__ == '__main__':
     # DEBUG is SET to TRUE. CHANGE FOR PROD
-    app.run(port=5000, debug=True)
+    # app.run(port=5000, debug=True)
+    app.run(host="192.17.131.230", port=5000)

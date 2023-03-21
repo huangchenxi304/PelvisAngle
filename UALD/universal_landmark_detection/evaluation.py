@@ -14,8 +14,6 @@ from tqdm import tqdm
 from model.utils import mkdir, toYaml, dis2, colorRGB, getPointsFromHeatmap
 
 PATH_DIC = {
-    'cephalometric': '../data/ISBI2015_ceph/raw',
-    'hand': '../data/hand/jpg',
     'gupen': '../data/gupen/pngs',
 }
 
@@ -23,7 +21,7 @@ FONT_PATH = './times.ttf'
 THRESHOLD = [2, 2.5, 3, 4, 6, 9, 10]
 CEPH_PHYSICAL_FACTOR = 0.46875
 WRIST_WIDTH = 50  # mm
-DRAW_TEXT_SIZE_FACTOR = {'cephalometric': 1.13, 'hand': 1, 'gupen': 1.39}
+DRAW_TEXT_SIZE_FACTOR = {'gupen': 1.39}
 CLASSES = ["LFH1", "LFH2", "LFH3", "LFHCE", "LIPSS", "LIPTE", "LOPAC", "RFH1", "RFH2", "RFH3", "RFHCE", "RIPSS",
            "RIPTE", "ROPAC"]
 
@@ -191,8 +189,6 @@ def evaluate(input_path, output_path, phase, save_img=True, assigned=False, IS_D
         gt_map = np.load(os.path.join(input_path, gt_p))
         cur_gt = getPointsFromHeatmap(gt_map)
 
-        if dataset == 'hand':
-            physical_factor = WRIST_WIDTH / radial(cur_gt[0], cur_gt[4])
         cur_distance_list = cal_all_distance(cur_points, cur_gt, physical_factor)
         cur_pixel_dis = cal_all_distance(cur_points, cur_gt, 1)
         distance_list += cur_distance_list
@@ -203,12 +199,8 @@ def evaluate(input_path, output_path, phase, save_img=True, assigned=False, IS_D
         saveLabels(out_label_path + '/' + name + '.txt', cur_points, img_size)
         saveLabels(out_gt_path + '/' + name + '.txt', cur_gt, img_size)
 
-        if dataset == 'cephalometric':
-            img_path = image_path_pre + '/' + name + '.bmp'
-        elif dataset == 'hand':
-            img_path = image_path_pre + '/' + name + '.jpg'
-        else:
-            img_path = image_path_pre + '/' + name
+
+        img_path = image_path_pre + '/' + name
         img = Image.open(img_path)
         img = img.resize(img_size)
         img = np.array(img)
