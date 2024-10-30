@@ -424,5 +424,5 @@ https://github.com/MIRACLE-Center/YOLO_Universal_Anatomical_Landmark_Detection
 
 ## Acknowledge:bouquet::bouquet::bouquet:
 
-仅以此项目献给臭宝:penguin:
+:penguin:
 
